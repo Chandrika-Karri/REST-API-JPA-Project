@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!-- xml version, encoding language and standalone=yes tells the compiler that it doesn't need any other
+ resources from outside. All the required resources for this project is defined in this xml file only-->
+
+<!-- persistence element is for configuring Java persistence application. JPA is used for managing the
+relational databases. in the persistence element we configure the jpa to interact the apllication with
+the database. -->
+<persistence xmlns="https://jakarta.ee/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="https://jakarta.ee/xml/ns/persistence https://jakarta.ee/xml/ns/persistence/persistence_3_0.xsd"
+             version="3.0"><!--  jakarta persistence(jpa) version-->
+
+    <!-- in this project we are using Glassfish as web server and derby database is used. The derby database
+     is integrated in the Glassfish server only. In the Glassfish configuration files we find the values
+     like jta-data-source in domain.xml file. The transaction-type is JTA means the database activities
+     like creating EntityFactoryManager,EntityManager, committing changes and closing the connections
+     are done automatically.-->
+    <persistence-unit name="default" transaction-type="JTA">
+        <jta-data-source>jdbc/__default</jta-data-source>
+        <!--  The properties element is used to customize the jpa configuration properties. Here we are
+        using eclipselink as jpa provider. The below three properties are
+        1. To create tables with rows and columns in the database.
+        2. The operations like creating,updating,reading and deleting are directly implemented in the database
+        3. The database with column names is created by using the Movie entity class-->
+        <properties>
+
+            <property name="eclipselink.ddl-generation" value="create-tables"/>
+            <property name="eclipselink.ddl-generation.output-mode" value="database"/>
+            <property name="javax.persistence.schema-generation.database.action" value="create"/>
+        </properties>
+
+    </persistence-unit>
+</persistence>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- POM stands for Project Object Model is used for different aspects that are required to
+  support our project. This file has important configurations like dependencies, plugins, properties
+  and many more. XML is extensible markup language that has both machine and human-readable language.
+  UTF-8 is the encoding language -->
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <!--  This above project tag gives the path where the maven build tool is located and the version.-->
+
+    <groupId>com.example</groupId> <!-- groupId refers to the organisation that project belongs to -->
+    <artifactId>REST-API-JPA-Project</artifactId> <!-- uses the war files when it is used as
+     dependency in other projects-->
+    <version>1.0-SNAPSHOT</version> <!-- version of the project-->
+    <name>REST-API-JPA-Project</name> <!-- name of the project -->
+    <packaging>war</packaging> <!-- as it is a web application it is maven generates a war file -->
+
+
+    <properties> <!-- Maven's configuration section -->
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding> <!-- encoding language -->
+        <maven.compiler.target>11</maven.compiler.target> <!-- java version-->
+        <maven.compiler.source>11</maven.compiler.source> <!-- java version-->
+        <junit.version>5.10.2</junit.version> <!-- junit version -->
+    </properties>
+
+    <dependencies>
+        <dependency> <!-- dependencies are downloaded automatically that are supported by the project-->
+            <groupId>jakarta.platform</groupId> <!-- it is jakarta EE organisation name-->
+            <artifactId>jakarta.jakartaee-web-api</artifactId> <!-- web application that includes all classes
+            to develop the application-->
+            <version>9.1.0</version> <!-- jakarta EE version -->
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId> <!-- junit 5 framework/ organisation name of junit -->
+            <artifactId>junit-jupiter-api</artifactId> <!-- It is an interface from where all the Annotations like @test,
+            @beforeeach,@aftereach are used to test our test cases-->
+            <version>${junit.version}</version><!--  junit version, the version is specified in the properties
+             section-->
+            <scope>test</scope> <!-- this is allowed to test and run the junit test cases -->
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId><!-- junit engine dependency, api gives access to
+             Annotations and engine runs them-->
+            <version>${junit.version}</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins><!-- maven plugin -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId><!-- maven organisation name-->
+                <artifactId>maven-war-plugin</artifactId> <!-- maven plugin name -->
+                <version>3.4.0</version><!--  maven version-->
+            </plugin>
+        </plugins>
+    </build>
+</project>
