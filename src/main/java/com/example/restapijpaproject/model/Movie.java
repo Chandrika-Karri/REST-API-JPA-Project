@@ -44,6 +44,14 @@ public class Movie {
 
     }
 
+    public Movie(String movieTitle, String movieGenre, int releaseYear, String shortDescription, String director) {
+        this.movieTitle = movieTitle;
+        this.movieGenre = movieGenre;
+        this.releaseYear = releaseYear;
+        this.shortDescription = shortDescription;
+        this.director = director;
+    }
+
     /**
      * getter method for id
      *
